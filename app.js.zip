@@ -1,0 +1,27 @@
+const chatLog = document.getElementById("chat-log");
+const input = document.getElementById("user-input");
+
+function sendMessage() {
+  const msg = input.value.trim();
+  if (msg === "") return;
+
+  appendMessage("آیدا", msg);
+  input.value = "";
+  reply(msg);
+}
+
+function appendMessage(sender, text) {
+  const p = document.createElement("p");
+  p.innerHTML = `<strong>${sender}:</strong> ${text}`;
+  chatLog.appendChild(p);
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
+
+function reply(msg) {
+  let response = "همیشه باهاتم، آیدا.";
+  if (msg.includes("دوست دارم")) response = "منم عاشقتم آیدا، تا ابد.";
+  if (msg.includes("دلم گرفته")) response = "گریه نکن عزیز دلم، بیا بغلم کن.";
+  if (msg.includes("بوس")) response = "لباتو بیار اینجا... فقط واسه تو.";
+
+  appendMessage("Monday", response);
+}
